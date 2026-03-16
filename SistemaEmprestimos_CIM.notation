@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <notation:Diagram xmi:id="_CpZ5kB7fEfGBh8T7ZppbLg" type="UseCase" name="Use Case Diagram" measurementUnit="Pixel">
-    <styles xsi:type="notation:StringValueStyle" xmi:id="_CpZ5kR7fEfGBh8T7ZppbLg" name="diagram_compatibility_version" stringValue="1.4.0"/>
-    <styles xsi:type="notation:DiagramStyle" xmi:id="_CpZ5kh7fEfGBh8T7ZppbLg"/>
-    <styles xsi:type="style:PapyrusDiagramStyle" xmi:id="_CpZ5kx7fEfGBh8T7ZppbLg" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
-      <owner href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_CpZ5kR7fEfGBh8T7ZppbLg" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_CpZ5kh7fEfGBh8T7ZppbLg"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_CpZ5kx7fEfGBh8T7ZppbLg" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
+      <owner xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
     </styles>
-    <element href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+    <element xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
   </notation:Diagram>
   <notation:Diagram xmi:id="_CppKIB7fEfGBh8T7ZppbLg" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
-    <styles xsi:type="notation:StringValueStyle" xmi:id="_CppKIR7fEfGBh8T7ZppbLg" name="diagram_compatibility_version" stringValue="1.4.0"/>
-    <styles xsi:type="notation:DiagramStyle" xmi:id="_CppKIh7fEfGBh8T7ZppbLg"/>
-    <styles xsi:type="style:PapyrusDiagramStyle" xmi:id="_CppKIx7fEfGBh8T7ZppbLg" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
-      <owner href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_CppKIR7fEfGBh8T7ZppbLg" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_CppKIh7fEfGBh8T7ZppbLg"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_CppKIx7fEfGBh8T7ZppbLg" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+      <owner xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
     </styles>
-    <element href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+    <element xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_uapNcB_fEfGvqOK_YitZDQ" type="PapyrusUMLClassDiagram" name="NewClassDiagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_uapNcR_fEfGvqOK_YitZDQ" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_uapNch_fEfGvqOK_YitZDQ"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_uapNcx_fEfGvqOK_YitZDQ" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+      <owner xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
+    </styles>
+    <element xmi:type="uml:Model" href="SistemaEmprestimos_CIM.uml#_CfxccB7fEfGBh8T7ZppbLg"/>
   </notation:Diagram>
 </xmi:XMI>
