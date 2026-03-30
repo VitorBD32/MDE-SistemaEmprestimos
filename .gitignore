@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.gem
 *.rbc
 /.config
@@ -54,3 +55,17 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
+=======
+# Java compiled output
+/bin/
+*.class
+
+# Eclipse build artifacts
+*.pydevproject
+local.properties
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+>>>>>>> 6db42609df06b0773479f9fd896d5ab2cb562ea2
