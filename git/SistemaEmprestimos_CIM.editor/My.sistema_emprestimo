@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sistemaemprestimo:Emprestimo xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sistemaemprestimo="http://www.example.org/sistemaemprestimo" dataRetirada="2026-03-30T00:00:00.000-0300" dataDevolucaoPrevista="2026-04-30T00:00:00.000-0300"/>
