@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated My -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="sistema_emprestimo.presentation.Sistema_emprestimoModelWizardID"
+            name="%_UI_Sistema_emprestimoModelWizard_label"
+            class="sistema_emprestimo.presentation.Sistema_emprestimoModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Sistema_emprestimoModelFile.gif">
+         <description>%_UI_Sistema_emprestimoModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated My -->
+      <editor
+            id="sistema_emprestimo.presentation.Sistema_emprestimoEditorID"
+            name="%_UI_Sistema_emprestimoEditor_label"
+            icon="icons/full/obj16/Sistema_emprestimoModelFile.gif"
+            extensions="sistema_emprestimo"
+            class="sistema_emprestimo.presentation.Sistema_emprestimoEditor"
+            contributorClass="sistema_emprestimo.presentation.Sistema_emprestimoActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
