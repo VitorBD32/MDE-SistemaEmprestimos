@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Instâncias de exemplo do Sistema de Empréstimos (VÁLIDO).
+  Este arquivo contém um Professor, um Equipamento e um Empréstimo válido
+  que satisfaz todas as restrições OCL definidas em ocl/constraints.ocl.
+
+  Restrições satisfeitas:
+    - equipamentoDisponivel  : equipamento.isDisponivel = true
+    - devolucaoDepoisDaRetirada : dataDevolucaoPrevista (2026-05-10) >= dataRetirada (2026-05-01)
+-->
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sistemaemprestimo="http://www.example.org/sistemaemprestimo"
+    xsi:schemaLocation="http://www.example.org/sistemaemprestimo ../model/My.ecore">
+
+  <sistemaemprestimo:Professor xmi:id="prof1"
+      nome="João Silva"
+      matricula="MAT-2024-001"
+      departamento="Engenharia de Computação"/>
+
+  <sistemaemprestimo:Equipamento xmi:id="equip1"
+      nome="Notebook Dell Latitude"
+      codigoTombamento="100042"
+      isDisponivel="true"/>
+
+  <sistemaemprestimo:Emprestimo xmi:id="emp1"
+      dataRetirada="2026-05-01"
+      dataDevolucaoPrevista="2026-05-10"
+      equipamentoEmprestado="equip1"
+      professorResponsavel="prof1"/>
+
+</xmi:XMI>

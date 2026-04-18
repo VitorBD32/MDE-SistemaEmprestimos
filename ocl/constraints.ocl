@@ -1,0 +1,21 @@
+import 'platform:/resource/MDE-SistemaEmprestimos/model/My.ecore'
+
+-- Sistema de Empréstimos - Restrições OCL
+-- Formato: Complete OCL (sem package/endpackage)
+-- Contextos usando qualificação completa pelo nome do pacote
+
+-- RF: A matrícula de cada professor deve ser única entre todos os professores.
+context sistema_emprestimo::Professor
+inv matriculaUnica:
+    sistema_emprestimo::Professor.allInstances()->isUnique(p | p.matricula)
+
+-- RF: Um empréstimo só pode ser realizado com um equipamento disponível.
+context sistema_emprestimo::Emprestimo
+inv equipamentoDisponivel:
+    self.equipamentoEmprestado <> null implies self.equipamentoEmprestado.isDisponivel
+
+-- RF: A data de devolução prevista não pode ser anterior à data de retirada.
+context sistema_emprestimo::Emprestimo
+inv devolucaoDepoisDaRetirada:
+    self.dataRetirada <> null and self.dataDevolucaoPrevista <> null
+    implies self.dataDevolucaoPrevista >= self.dataRetirada

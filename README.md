@@ -2,6 +2,55 @@
 
 > Projeto acadêmico desenvolvido com **Engenharia Dirigida por Modelos (MDE)** utilizando o **Eclipse Modeling Framework (EMF)**. O sistema modela o fluxo de empréstimo de equipamentos de laboratório entre professores de uma instituição de ensino.
 
+## 🎯 Módulo 2 — PIM (Especificação Independente de Plataforma)
+
+> **Data de entrega:** 23 de Abril de 2026
+
+### Artefatos do PIM
+
+| Artefato | Caminho | Descrição |
+|---|---|---|
+| Metamodelo Ecore | `model/My.ecore` | Metamodelo canônico com 3 classes e referências corretas |
+| Restrições OCL | `ocl/constraints.ocl` | 3 invariantes OCL (matriculaUnica, equipamentoDisponivel, devolucaoDepoisDaRetirada) |
+| Instância válida | `instances/sample_instances.xmi` | Professor + Equipamento + Empréstimo válido |
+| Instância inválida | `instances/Emprestimo_invalido_devolucao.xmi` | Viola a restrição de data de devolução |
+| Relatório de validação | `validation/report_validation_PIM.txt` | Resultado da validação OCL para cada instância |
+| Relatório PIM | `PIM-report.md` | Decisões de modelagem, glossário e evidências |
+
+### 🔌 Plugins Eclipse necessários
+
+| Plugin | Versão recomendada | Finalidade |
+|---|---|---|
+| **Eclipse IDE** | 2024-09 (4.33) ou superior | Ambiente base |
+| **EMF SDK** | 2.37.0+ | Edição e geração a partir de Ecore |
+| **Eclipse OCL** | 6.22.0+ | Validação de restrições Complete OCL |
+| **Sirius** | 7.x (opcional) | Visualização dos diagramas `.aird` |
+
+### ▶️ Como validar o PIM no Eclipse
+
+1. **Importar o projeto:**  
+   `File → Import → General → Existing Projects into Workspace` → selecionar esta pasta.
+
+2. **Abrir o metamodelo:**  
+   Navegue até `model/My.ecore` no Project Explorer e abra com o *Ecore Editor* (duplo-clique).
+
+3. **Abrir as restrições OCL:**  
+   Abra `ocl/constraints.ocl` — o Eclipse reconhece automaticamente documentos Complete OCL quando o plugin OCL está instalado.
+
+4. **Validar uma instância XMI:**  
+   a. Abra `instances/sample_instances.xmi` no editor XMI.  
+   b. Clique com o botão direito na raiz do documento → **Validate**.  
+   c. Os resultados aparecerão na aba **Problems** (sem erros para esta instância).
+
+5. **Testar a instância inválida:**  
+   a. Abra `instances/Emprestimo_invalido_devolucao.xmi`.  
+   b. Execute **Validate** — o Eclipse reportará violação em `devolucaoDepoisDaRetirada`.
+
+6. **Ver o relatório de validação:**  
+   Consulte `validation/report_validation_PIM.txt` para o resultado documentado.
+
+---
+
 ---
 
 ## 📖 Sobre o Projeto
@@ -35,6 +84,19 @@ O sistema foi pensado para instituições de ensino e pesquisa que possuem labor
 ```
 MDE-SistemaEmprestimos/
 │
+├── model/
+│   └── My.ecore                         # Metamodelo Ecore canônico (PIM)
+│
+├── instances/
+│   ├── sample_instances.xmi             # Instância válida (Professor + Equipamento + Emprestimo)
+│   └── Emprestimo_invalido_devolucao.xmi # Instância inválida (viola OCL devolucaoDepoisDaRetirada)
+│
+├── ocl/
+│   └── constraints.ocl                  # Restrições OCL (3 invariantes)
+│
+├── validation/
+│   └── report_validation_PIM.txt        # Relatório de validação OCL
+│
 ├── src/
 │   └── sistema_emprestimo/              # Pacote principal gerado pelo EMF
 │       ├── Professor.java               # Interface da entidade Professor
@@ -62,16 +124,12 @@ MDE-SistemaEmprestimos/
 ├── META-INF/
 │   └── MANIFEST.MF                      # Manifesto do plugin Eclipse
 │
-├── My.ecore                             # Definição do metamodelo (Ecore)
 ├── My.genmodel                          # Modelo de geração de código
-│
-├── Professor.xmi                        # Instância de exemplo: Professor
-├── Equipamento.xmi                      # Instância de exemplo: Equipamento
-├── Emprestimo.xmi                       # Instância de exemplo: Empréstimo
 │
 ├── SistemaEmprestimos_CIM.uml           # Diagrama UML do sistema
 ├── SistemaEmprestimos_CIM.aird          # Representação visual Sirius
 │
+├── PIM-report.md                        # Relatório do Módulo 2 (PIM)
 ├── plugin.xml                           # Configuração do plugin Eclipse
 ├── build.properties                     # Propriedades de build
 └── text/
@@ -82,7 +140,7 @@ MDE-SistemaEmprestimos/
 
 ## 🗂️ Modelo de Dados
 
-O sistema possui três entidades principais, definidas no metamodelo `My.ecore`:
+O sistema possui três entidades principais, definidas no metamodelo `model/My.ecore`:
 
 ### 👨‍🏫 Professor
 
@@ -216,7 +274,7 @@ git clone https://github.com/VitorBD32/MDE-SistemaEmprestimos.git
 - O Eclipse compilará os fontes Java para o diretório `/bin`
 
 **4. Regenerar código a partir do metamodelo (opcional)**
-> Necessário apenas se você modificar o arquivo `My.ecore`
+> Necessário apenas se você modificar o arquivo `model/My.ecore`
 
 - Clique com o botão direito em `My.genmodel`
 - Selecione `Generate All`
