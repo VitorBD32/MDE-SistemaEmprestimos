@@ -1,0 +1,82 @@
+================================================================
+Relatório de Validação — PIM (MDE-SistemaEmprestimos)
+Módulo 2: Especificação Independente de Plataforma
+Data de referência: 2026-04-18
+================================================================
+
+AMBIENTE RECOMENDADO
+--------------------
+- Eclipse IDE 2024-12 (ou superior) com os seguintes plugins instalados:
+    • EMF (Eclipse Modeling Framework) — incluso na distribuição "Eclipse Modeling Tools"
+    • OCL Classic SDK / OCL 2.x (org.eclipse.ocl) — instalar via Eclipse Marketplace
+- Java 21 ou superior
+
+ARQUIVOS ENVOLVIDOS
+-------------------
+- model/My.ecore                  → Metamodelo canônico (PIM)
+- ocl/constraints.ocl             → Restrições OCL (3 invariantes)
+- instances/sample_instances.xmi  → Instâncias de exemplo (válida e inválida)
+
+INVARIANTES OCL AVALIADAS
+--------------------------
+1. sistema_emprestimo::Professor::matriculaUnica
+   — Professor.allInstances()->isUnique(matricula)
+   — Garante que não existam dois professores com a mesma matrícula.
+
+2. sistema_emprestimo::Emprestimo::equipamentoDisponivel
+   — self.equipamentoEmprestado <> null implies self.equipamentoEmprestado.isDisponivel
+   — Garante que o equipamento associado ao empréstimo esteja disponível.
+
+3. sistema_emprestimo::Emprestimo::devolucaoDepoisDaRetirada
+   — self.dataDevolucaoPrevista >= self.dataRetirada
+   — Garante que a data prevista de devolução não seja anterior à data de retirada.
+
+RESULTADOS ESPERADOS
+---------------------
+Instância          | Invariante                    | Resultado | Motivo
+-------------------|-------------------------------|-----------|-----------------------------------------------
+emp_valid          | matriculaUnica                | PASS      | Somente um Professor (p1) na instância
+emp_valid          | equipamentoDisponivel         | PASS      | eq1.isDisponivel = true
+emp_valid          | devolucaoDepoisDaRetirada     | PASS      | 2026-04-20 >= 2026-04-10
+emp_invalid_devolucao | matriculaUnica             | PASS      | Professor (p1) único
+emp_invalid_devolucao | equipamentoDisponivel      | PASS      | eq1.isDisponivel = true
+emp_invalid_devolucao | devolucaoDepoisDaRetirada  | FAIL      | dataDevolucaoPrevista (2026-04-20) < dataRetirada (2026-04-25): devolução prevista antes da retirada
+
+COMO REPRODUZIR A VALIDAÇÃO LOCALMENTE (Eclipse)
+-------------------------------------------------
+1. Clonar o repositório e importar o projeto no Eclipse:
+     File → Import → General → Existing Projects into Workspace
+     Selecionar o diretório raiz do projeto → Finish
+
+2. Abrir model/My.ecore no Ecore Editor e verificar a integridade do metamodelo.
+
+3. Registrar o metamodelo (se necessário):
+     - Clique com o botão direito em model/My.ecore
+     - Selecione "Register EPackages"
+     - Isso torna o pacote disponível em runtime para o editor XMI.
+
+4. Abrir instances/sample_instances.xmi no Sample Reflective Ecore Model Editor:
+     - Clique com o botão direito no arquivo
+     - Open With → Sample Reflective Ecore Model Editor
+
+5. Executar a validação:
+     - Com o arquivo XMI aberto no editor, vá em:
+         Edit → Validate  (ou clique com o botão direito → Validate)
+     - Os marcadores de problema aparecerão no "Problems" view.
+
+6. Para validação com OCL explícito:
+     - Instale o plugin "OCL Classic SDK" via Eclipse Marketplace.
+     - Abra ocl/constraints.ocl no editor OCL.
+     - Use Window → Show View → Other → OCL → OCL Console
+       e execute: File.loadOCL('ocl/constraints.ocl')
+     - Verifique os resultados no console.
+
+7. Resultados esperados:
+     - emp_valid: nenhum marcador de erro → PASS em todas as invariantes.
+     - emp_invalid_devolucao: marcador de erro indicando violação de
+       "devolucaoDepoisDaRetirada" → FAIL (conforme esperado).
+
+================================================================
+Nota: este relatório documenta os resultados *esperados* da validação.
+A execução real deve ser realizada no Eclipse conforme as instruções acima.
+================================================================
