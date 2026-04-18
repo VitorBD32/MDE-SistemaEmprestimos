@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Instâncias representativas do Sistema de Empréstimos (PIM - Módulo 2)
+  Esquema: model/My.ecore
+  nsURI:   http://www.example.org/sistemaemprestimo
+
+  Conteúdo:
+    p1          - Professor válido
+    eq1         - Equipamento disponível
+    emp_valid   - Empréstimo válido (dataDevolucaoPrevista >= dataRetirada)  → OCL PASS
+    emp_invalid_devolucao - Empréstimo inválido (devolução anterior à retirada) → OCL FAIL
+-->
+<sistemaemprestimo:SistemaEmprestimo xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sistemaemprestimo="http://www.example.org/sistemaemprestimo"
+    xsi:schemaLocation="http://www.example.org/sistemaemprestimo ../model/My.ecore">
+
+  <professores xmi:id="p1" nome="João Silva" matricula="2026001" departamento="Engenharia"/>
+
+  <equipamentos xmi:id="eq1" nome="Notebook Dell" codigoTombamento="12345" isDisponivel="true"/>
+
+  <!-- Empréstimo válido: devolução (2026-04-20) >= retirada (2026-04-10) → PASS -->
+  <emprestimos xmi:id="emp_valid"
+      dataRetirada="2026-04-10T09:00:00"
+      dataDevolucaoPrevista="2026-04-20T09:00:00"
+      equipamentoEmprestado="eq1"
+      professorResponsavel="p1"/>
+
+  <!-- Empréstimo inválido: devolução (2026-04-20) < retirada (2026-04-25) → FAIL devolucaoDepoisDaRetirada -->
+  <emprestimos xmi:id="emp_invalid_devolucao"
+      dataRetirada="2026-04-25T09:00:00"
+      dataDevolucaoPrevista="2026-04-20T09:00:00"
+      equipamentoEmprestado="eq1"
+      professorResponsavel="p1"/>
+
+</sistemaemprestimo:SistemaEmprestimo>

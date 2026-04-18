@@ -4,6 +4,45 @@
 
 ---
 
+## ✅ Módulo 2 — PIM (Entrega 23/04/2026)
+
+### Artefatos entregues
+
+| Artefato | Localização | Descrição |
+|---|---|---|
+| Metamodelo canônico | `model/My.ecore` | Definição Ecore com 3 EClasses e referências corrigidas |
+| Instâncias representativas | `instances/sample_instances.xmi` | 1 caso válido + 1 caso inválido |
+| Restrições OCL | `ocl/constraints.ocl` | 3 invariantes: matrícula única, equipamento disponível, devolução após retirada |
+| Relatório de validação | `validation/report_validation_PIM.txt` | Resultados esperados e instruções de reprodução |
+
+### Como validar no Eclipse
+
+**Pré-requisitos:**
+- Eclipse IDE 2024-12 (distribuição *Eclipse Modeling Tools* recomendada)
+- Plugin OCL Classic SDK instalado (via Eclipse Marketplace)
+- Java 21 ou superior
+
+**Passos:**
+1. `File → Import → General → Existing Projects into Workspace` — selecionar a raiz do projeto.
+2. Clique com o botão direito em `model/My.ecore` → **Register EPackages**.
+3. Abra `instances/sample_instances.xmi` com o **Sample Reflective Ecore Model Editor**.
+4. No editor do XMI: `Edit → Validate` — confira o *Problems View*:
+   - `emp_valid` não deve gerar erros.
+   - `emp_invalid_devolucao` deve gerar erro na invariante `devolucaoDepoisDaRetirada`.
+5. Para validação explícita com OCL, abra `ocl/constraints.ocl` no editor OCL e use o *OCL Console*.
+
+Consulte `validation/report_validation_PIM.txt` para os resultados esperados detalhados.
+
+### Decisões de modelagem
+
+- **`lowerBound="1"`** nas referências `equipamentoEmprestado` e `professorResponsavel`: todo empréstimo deve, obrigatoriamente, ter um equipamento e um professor associados. Caso o grupo prefira tornar as referências opcionais (`lowerBound="0"`), o valor pode ser ajustado no metamodelo e o código Java regerado via `My.genmodel`.
+- O pacote OCL usa `sistema_emprestimo::` como qualificador de contexto (alinhado ao `name` do EPackage).
+- Os projetos EcoRoute (exemplos de gerador Acceleo) foram movidos para `generators/` para não poluir a raiz.
+
+---
+
+---
+
 ## 📖 Sobre o Projeto
 
 O **Sistema de Empréstimos** é um modelo de domínio criado dentro do contexto de **Engenharia Dirigida por Modelos (MDE — *Model-Driven Engineering*)**, uma abordagem de desenvolvimento de software que eleva os modelos a artefatos de primeira classe no processo de criação de sistemas.
@@ -35,47 +74,44 @@ O sistema foi pensado para instituições de ensino e pesquisa que possuem labor
 ```
 MDE-SistemaEmprestimos/
 │
+├── model/
+│   └── My.ecore                         # Metamodelo canônico (PIM) ← versão única e correta
+│
+├── instances/
+│   └── sample_instances.xmi             # Instâncias representativas (válida e inválida)
+│
+├── ocl/
+│   └── constraints.ocl                  # Restrições OCL (3 invariantes)
+│
+├── validation/
+│   └── report_validation_PIM.txt        # Relatório de validação esperada
+│
 ├── src/
 │   └── sistema_emprestimo/              # Pacote principal gerado pelo EMF
 │       ├── Professor.java               # Interface da entidade Professor
 │       ├── Equipamento.java             # Interface da entidade Equipamento
 │       ├── Emprestimo.java              # Interface da entidade Empréstimo
-│       ├── Sistema_emprestimoFactory.java   # Fábrica para criação de instâncias
-│       ├── Sistema_emprestimoPackage.java   # Metadados do pacote EMF
-│       │
-│       ├── impl/                        # Implementações concretas das interfaces
-│       │   ├── EmprestimoImpl.java
-│       │   ├── EquipamentoImpl.java
-│       │   ├── ProfessorImpl.java
-│       │   ├── Sistema_emprestimoFactoryImpl.java
-│       │   └── Sistema_emprestimoPackageImpl.java
-│       │
+│       ├── Sistema_emprestimoFactory.java
+│       ├── Sistema_emprestimoPackage.java
+│       ├── impl/                        # Implementações concretas
 │       ├── util/                        # Classes utilitárias do EMF
-│       │   ├── Sistema_emprestimoAdapterFactory.java
-│       │   └── Sistema_emprestimoSwitch.java
-│       │
 │       └── validation/                  # Interfaces de validação
-│           ├── EmprestimoValidator.java
-│           ├── EquipamentoValidator.java
-│           └── ProfessorValidator.java
+│
+├── generators/                          # Exemplos de projetos geradores (EcoRoute — Módulo 3 ref.)
+│   ├── EcoRoute-Agro-Model/
+│   ├── EcoRoute.generator.sql/
+│   └── EcoRoute.sql.generator/
 │
 ├── META-INF/
-│   └── MANIFEST.MF                      # Manifesto do plugin Eclipse
+│   └── MANIFEST.MF
 │
-├── My.ecore                             # Definição do metamodelo (Ecore)
-├── My.genmodel                          # Modelo de geração de código
-│
-├── Professor.xmi                        # Instância de exemplo: Professor
-├── Equipamento.xmi                      # Instância de exemplo: Equipamento
-├── Emprestimo.xmi                       # Instância de exemplo: Empréstimo
-│
-├── SistemaEmprestimos_CIM.uml           # Diagrama UML do sistema
+├── My.genmodel                          # Modelo de geração de código EMF
+├── SistemaEmprestimos_CIM.uml           # Diagrama UML — CIM (Módulo 1)
 ├── SistemaEmprestimos_CIM.aird          # Representação visual Sirius
-│
-├── plugin.xml                           # Configuração do plugin Eclipse
-├── build.properties                     # Propriedades de build
+├── plugin.xml
+├── build.properties
 └── text/
-    └── description.txt                  # Descrição textual do modelo
+    └── description.txt
 ```
 
 ---
