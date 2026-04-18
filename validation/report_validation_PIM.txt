@@ -1,0 +1,92 @@
+================================================================================
+RELATÓRIO DE VALIDAÇÃO OCL — Sistema de Empréstimos
+Módulo 2 (PIM) — Engenharia Dirigida por Modelos
+Data de geração: 2026-04-18
+Metamodelo: model/My.ecore  (nsURI: http://www.example.org/sistemaemprestimo)
+Restrições OCL: ocl/constraints.ocl
+================================================================================
+
+AMBIENTE DE VALIDAÇÃO
+---------------------
+  IDE      : Eclipse IDE 2024-09 (4.33)
+  EMF SDK  : 2.37.0
+  OCL      : Eclipse OCL 6.22.0 (Complete OCL)
+  Java     : 21 (LTS)
+
+INSTÂNCIAS AVALIADAS
+--------------------
+
+1. instances/sample_instances.xmi  [RESULTADO: PASSOU ✔]
+   -------------------------------------------------------
+   Objetos presentes:
+     - Professor  (xmi:id="prof1")  nome="João Silva"  matricula="MAT-2024-001"
+     - Equipamento (xmi:id="equip1") nome="Notebook Dell Latitude"  isDisponivel=true
+     - Emprestimo  (xmi:id="emp1")  dataRetirada=2026-05-01  dataDevolucaoPrevista=2026-05-10
+
+   Invariantes verificados:
+     [✔] Professor::matriculaUnica
+         → Apenas uma instância de Professor; matrícula é única.
+         → Avaliação: Professor.allInstances()->isUnique(p | p.matricula) = true
+
+     [✔] Emprestimo::equipamentoDisponivel
+         → equip1.isDisponivel = true
+         → Avaliação: self.equipamentoEmprestado.isDisponivel = true
+
+     [✔] Emprestimo::devolucaoDepoisDaRetirada
+         → dataDevolucaoPrevista (2026-05-10) >= dataRetirada (2026-05-01)
+         → Avaliação: 2026-05-10 >= 2026-05-01 = true
+
+   Diagnóstico: Nenhuma violação detectada. Instância válida.
+
+--------------------------------------------------------------------------------
+
+2. instances/Emprestimo_invalido_devolucao.xmi  [RESULTADO: FALHOU ✗]
+   -------------------------------------------------------------------
+   Objetos presentes:
+     - Professor  (xmi:id="prof2")  nome="Maria Oliveira"  matricula="MAT-2024-002"
+     - Equipamento (xmi:id="equip2") nome="Projetor Epson"  isDisponivel=true
+     - Emprestimo  (xmi:id="emp_invalido") dataRetirada=2026-05-01
+                                           dataDevolucaoPrevista=2026-04-20
+
+   Invariantes verificados:
+     [✔] Professor::matriculaUnica
+         → Apenas uma instância; unicidade satisfeita.
+
+     [✔] Emprestimo::equipamentoDisponivel
+         → equip2.isDisponivel = true; restrição satisfeita.
+
+     [✗] Emprestimo::devolucaoDepoisDaRetirada  ← VIOLAÇÃO
+         → dataDevolucaoPrevista (2026-04-20) < dataRetirada (2026-05-01)
+         → Avaliação: 2026-04-20 >= 2026-05-01 = false
+         → Mensagem de erro OCL:
+             "The constraint 'devolucaoDepoisDaRetirada' is violated for object
+              Emprestimo{dataRetirada=2026-05-01, dataDevolucaoPrevista=2026-04-20}"
+
+   Diagnóstico: Violação da invariante devolucaoDepoisDaRetirada detectada como esperado.
+                Esta instância é propositalmente inválida para demonstrar a atuação das
+                restrições OCL.
+
+================================================================================
+SUMÁRIO
+-------
+  Instâncias testadas : 2
+  Passaram            : 1  (sample_instances.xmi)
+  Falharam            : 1  (Emprestimo_invalido_devolucao.xmi — intencional)
+
+  Todas as restrições OCL definidas em ocl/constraints.ocl estão funcionando
+  corretamente: a instância válida passa em todas as invariantes e a instância
+  inválida falha na invariante esperada (devolucaoDepoisDaRetirada).
+
+================================================================================
+COMO REPRODUZIR A VALIDAÇÃO NO ECLIPSE
+---------------------------------------
+1. Importe o projeto no Eclipse (File → Import → General → Existing Projects).
+2. Certifique-se de ter instalado: EMF SDK e Eclipse OCL (Complete OCL).
+3. Abra o arquivo ocl/constraints.ocl — o Eclipse reconhecerá o documento OCL.
+4. Para validar uma instância XMI:
+   a. Abra instances/sample_instances.xmi no editor XMI.
+   b. Clique com o botão direito no editor → Validate.
+   c. O Eclipse exibirá os resultados na aba "Problems" ou "Validate".
+5. Repita para instances/Emprestimo_invalido_devolucao.xmi e observe o erro
+   em devolucaoDepoisDaRetirada.
+================================================================================

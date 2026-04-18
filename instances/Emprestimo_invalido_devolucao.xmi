@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Instância INVÁLIDA — viola a restrição OCL devolucaoDepoisDaRetirada.
+
+  Restrição violada:
+    context sistema_emprestimo::Emprestimo
+    inv devolucaoDepoisDaRetirada:
+        self.dataRetirada <> null and self.dataDevolucaoPrevista <> null
+        implies self.dataDevolucaoPrevista >= self.dataRetirada
+
+  Aqui dataDevolucaoPrevista (2026-04-20) é ANTERIOR a dataRetirada (2026-05-01),
+  o que deve ser rejeitado pela validação OCL.
+-->
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sistemaemprestimo="http://www.example.org/sistemaemprestimo"
+    xsi:schemaLocation="http://www.example.org/sistemaemprestimo ../model/My.ecore">
+
+  <sistemaemprestimo:Professor xmi:id="prof2"
+      nome="Maria Oliveira"
+      matricula="MAT-2024-002"
+      departamento="Ciência da Computação"/>
+
+  <sistemaemprestimo:Equipamento xmi:id="equip2"
+      nome="Projetor Epson"
+      codigoTombamento="200018"
+      isDisponivel="true"/>
+
+  <!-- dataDevolucaoPrevista (2026-04-20) < dataRetirada (2026-05-01): INVÁLIDO -->
+  <sistemaemprestimo:Emprestimo xmi:id="emp_invalido"
+      dataRetirada="2026-05-01"
+      dataDevolucaoPrevista="2026-04-20"
+      equipamentoEmprestado="equip2"
+      professorResponsavel="prof2"/>
+
+</xmi:XMI>
