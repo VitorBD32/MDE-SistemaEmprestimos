@@ -17,6 +17,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//Equipamento/isDisponivel"/>
     </genClasses>
     <genClasses ecoreClass="My.ecore#//Emprestimo">
+      <genTypeParameters ecoreTypeParameter="My.ecore#//Emprestimo/%"/>
+      <genTypeParameters ecoreTypeParameter="My.ecore#//Emprestimo/%.1"/>
+      <genTypeParameters ecoreTypeParameter="My.ecore#//Emprestimo/%.2"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//Emprestimo/dataRetirada"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute My.ecore#//Emprestimo/dataDevolucaoPrevista"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference My.ecore#//Emprestimo/equipamentoEmprestado"/>

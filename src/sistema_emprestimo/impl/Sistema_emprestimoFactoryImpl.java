@@ -58,7 +58,7 @@ public class Sistema_emprestimoFactoryImpl extends EFactoryImpl implements Siste
 		switch (eClass.getClassifierID()) {
 			case Sistema_emprestimoPackage.PROFESSOR: return createProfessor();
 			case Sistema_emprestimoPackage.EQUIPAMENTO: return createEquipamento();
-			case Sistema_emprestimoPackage.EMPRESTIMO: return createEmprestimo();
+			case Sistema_emprestimoPackage.EMPRESTIMO: return (EObject)createEmprestimo();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

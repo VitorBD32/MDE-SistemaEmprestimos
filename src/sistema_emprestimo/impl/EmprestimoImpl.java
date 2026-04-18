@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import sistema_emprestimo.Emprestimo;
 import sistema_emprestimo.Equipamento;
+import sistema_emprestimo.Professor;
 import sistema_emprestimo.Sistema_emprestimoPackage;
 
 /**
@@ -91,7 +92,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 	 * @generated
 	 * @ordered
 	 */
-	protected Equipamento professorResponsavel;
+	protected Professor professorResponsavel;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -204,10 +205,10 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 	 * @generated
 	 */
 	@Override
-	public Equipamento getProfessorResponsavel() {
+	public Professor getProfessorResponsavel() {
 		if (professorResponsavel != null && professorResponsavel.eIsProxy()) {
 			InternalEObject oldProfessorResponsavel = (InternalEObject)professorResponsavel;
-			professorResponsavel = (Equipamento)eResolveProxy(oldProfessorResponsavel);
+			professorResponsavel = (Professor)eResolveProxy(oldProfessorResponsavel);
 			if (professorResponsavel != oldProfessorResponsavel) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Sistema_emprestimoPackage.EMPRESTIMO__PROFESSOR_RESPONSAVEL, oldProfessorResponsavel, professorResponsavel));
@@ -221,7 +222,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Equipamento basicGetProfessorResponsavel() {
+	public Professor basicGetProfessorResponsavel() {
 		return professorResponsavel;
 	}
 
@@ -231,8 +232,8 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 	 * @generated
 	 */
 	@Override
-	public void setProfessorResponsavel(Equipamento newProfessorResponsavel) {
-		Equipamento oldProfessorResponsavel = professorResponsavel;
+	public void setProfessorResponsavel(Professor newProfessorResponsavel) {
+		Professor oldProfessorResponsavel = professorResponsavel;
 		professorResponsavel = newProfessorResponsavel;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Sistema_emprestimoPackage.EMPRESTIMO__PROFESSOR_RESPONSAVEL, oldProfessorResponsavel, professorResponsavel));
@@ -278,7 +279,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 				setEquipamentoEmprestado((Equipamento)newValue);
 				return;
 			case Sistema_emprestimoPackage.EMPRESTIMO__PROFESSOR_RESPONSAVEL:
-				setProfessorResponsavel((Equipamento)newValue);
+				setProfessorResponsavel((Professor)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -302,7 +303,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 				setEquipamentoEmprestado((Equipamento)null);
 				return;
 			case Sistema_emprestimoPackage.EMPRESTIMO__PROFESSOR_RESPONSAVEL:
-				setProfessorResponsavel((Equipamento)null);
+				setProfessorResponsavel((Professor)null);
 				return;
 		}
 		super.eUnset(featureID);

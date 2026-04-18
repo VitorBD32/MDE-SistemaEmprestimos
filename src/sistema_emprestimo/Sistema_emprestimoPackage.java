@@ -323,6 +323,7 @@ public interface Sistema_emprestimoPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Emprestimo</em>'.
 	 * @see sistema_emprestimo.Emprestimo
+	 * @model instanceClass="sistema_emprestimo.Emprestimo"
 	 * @generated
 	 */
 	EClass getEmprestimo();

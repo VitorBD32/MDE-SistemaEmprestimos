@@ -13,12 +13,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="codigoTombamento" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDisponivel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Emprestimo">
+  <eClassifiers xsi:type="ecore:EClass" name="Emprestimo" instanceClassName="sistema_emprestimo.Emprestimo">
+    <eTypeParameters/>
+    <eTypeParameters/>
+    <eTypeParameters/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataRetirada" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataDevolucaoPrevista"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="equipamentoEmprestado"
-        eType="#//Equipamento"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="professorResponsavel" eType="#//Equipamento"/>
+        lowerBound="1" eType="#//Equipamento"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="professorResponsavel" lowerBound="1"
+        eType="#//Professor"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -1,0 +1,12 @@
+-- Sistema de Empréstimos - Restrições OCL
+-- Formato: Complete OCL (sem package/endpackage)
+-- Contextos usando qualificação completa
+
+context sistema_emprestimo::Professor inv matriculaUnica:
+  sistema_emprestimo::Professor.allInstances()->isUnique(matricula)
+
+context sistema_emprestimo::Emprestimo inv equipamentoDisponivel:
+  self.equipamentoEmprestado <> null implies self.equipamentoEmprestado.isDisponivel
+
+context sistema_emprestimo::Emprestimo inv devolucaoDepoisDaRetirada:
+  self.dataRetirada <> null and self.dataDevolucaoPrevista <> null implies self.dataDevolucaoPrevista >= self.dataRetirada
