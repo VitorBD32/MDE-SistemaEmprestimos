@@ -40,7 +40,7 @@ emp_valid          | equipamentoDisponivel         | PASS      | eq1.isDisponive
 emp_valid          | devolucaoDepoisDaRetirada     | PASS      | 2026-04-20 >= 2026-04-10
 emp_invalid_devolucao | matriculaUnica             | PASS      | Professor (p1) único
 emp_invalid_devolucao | equipamentoDisponivel      | PASS      | eq1.isDisponivel = true
-emp_invalid_devolucao | devolucaoDepoisDaRetirada  | FAIL      | 2026-04-20 < 2026-04-25 (devolução antes da retirada)
+emp_invalid_devolucao | devolucaoDepoisDaRetirada  | FAIL      | dataDevolucaoPrevista (2026-04-20) < dataRetirada (2026-04-25): devolução prevista antes da retirada
 
 COMO REPRODUZIR A VALIDAÇÃO LOCALMENTE (Eclipse)
 -------------------------------------------------
