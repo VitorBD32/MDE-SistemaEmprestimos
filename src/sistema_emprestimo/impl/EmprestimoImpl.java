@@ -205,7 +205,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 	 * @generated
 	 */
 	@Override
-	public Professor getProfessorResponsavel() {
+	public Equipamento getProfessorResponsavel() {
 		if (professorResponsavel != null && professorResponsavel.eIsProxy()) {
 			InternalEObject oldProfessorResponsavel = (InternalEObject)professorResponsavel;
 			professorResponsavel = (Professor)eResolveProxy(oldProfessorResponsavel);
@@ -214,7 +214,7 @@ public class EmprestimoImpl extends MinimalEObjectImpl.Container implements Empr
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Sistema_emprestimoPackage.EMPRESTIMO__PROFESSOR_RESPONSAVEL, oldProfessorResponsavel, professorResponsavel));
 			}
 		}
-		return professorResponsavel;
+		return (Equipamento) professorResponsavel;
 	}
 
 	/**

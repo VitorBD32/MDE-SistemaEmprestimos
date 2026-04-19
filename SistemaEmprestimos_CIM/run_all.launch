@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.debug.core.launchGroup">
+  <listAttribute key="org.eclipse.debug.core.launchGroup.LaunchConfigurations">
+    <listEntry value="/SistemaEmprestimos_CIM/headless_ocl_validator.launch"/>
+    <listEntry value="/SistemaEmprestimos_CIM/ecore2relational.launch"/>
+    <listEntry value="/SistemaEmprestimos_CIM/acceleo_generate.launch"/>
+  </listAttribute>
+  <stringAttribute key="org.eclipse.debug.core.launchGroup.DisplayName" value="Run: Validate + ATL + Acceleo"/>
+  <booleanAttribute key="org.eclipse.debug.core.launchGroup.stopOnError" value="true"/>
+  <!-- Note: If Eclipse rejects this launch format, open this file and use Run Configurations -> Launch Group -> create a new group and add the three existing launches. -->
+</launchConfiguration>

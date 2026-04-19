@@ -114,4 +114,11 @@ public interface Emprestimo extends EObject {
 	 */
 	void setProfessorResponsavel(Equipamento value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	void setProfessorResponsavel(Professor newProfessorResponsavel);
+
 } // Emprestimo

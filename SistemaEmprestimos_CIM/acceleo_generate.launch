@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.acceleo.engine.ui.launching.AcceleoLauncher">
+  <stringAttribute key="modulePath" value="/SistemaEmprestimos_CIM/emf_atl/GenerateSQL.mtl"/>
+  <stringAttribute key="modelURI" value="platform:/resource/SistemaEmprestimos_CIM/emf_atl/psm_relational_sample.xmi"/>
+  <stringAttribute key="metamodelURI" value="platform:/resource/SistemaEmprestimos_CIM/emf_atl/Relational.ecore"/>
+  <stringAttribute key="targetFolder" value="platform:/resource/SistemaEmprestimos_CIM/output_sql"/>
+  <!-- This launch is configured for project 'SistemaEmprestimos_CIM' -->
+</launchConfiguration>

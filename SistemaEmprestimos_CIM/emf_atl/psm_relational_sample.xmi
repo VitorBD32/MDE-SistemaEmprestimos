@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relational:Tables xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:relational="http://www.example.org/relational" xsi:schemaLocation="http://www.example.org/relational Relational.ecore">
+  <Table name="Professor">
+    <columns xmi:type="relational:Column" name="matricula" type="VARCHAR(64)" pk="true"/>
+    <columns xmi:type="relational:Column" name="nome" type="VARCHAR(255)" pk="false"/>
+    <columns xmi:type="relational:Column" name="departamento" type="VARCHAR(128)" pk="false"/>
+  </Table>
+  <Table name="Equipamento">
+    <columns xmi:type="relational:Column" name="codigoTombamento" type="INT" pk="true"/>
+    <columns xmi:type="relational:Column" name="nome" type="VARCHAR(255)" pk="false"/>
+    <columns xmi:type="relational:Column" name="isDisponivel" type="BOOLEAN" pk="false"/>
+  </Table>
+  <Table name="Emprestimo">
+    <columns xmi:type="relational:Column" name="id" type="INTEGER" pk="true"/>
+    <columns xmi:type="relational:Column" name="dataRetirada" type="TIMESTAMP" pk="false"/>
+    <columns xmi:type="relational:Column" name="dataDevolucaoPrevista" type="TIMESTAMP" pk="false"/>
+    <columns xmi:type="relational:Column" name="equipamentoCodigo" type="INT" pk="false"/>
+    <columns xmi:type="relational:Column" name="professorMatricula" type="VARCHAR(64)" pk="false"/>
+  </Table>
+</relational:Tables>
