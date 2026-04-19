@@ -14,4 +14,5 @@
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="tools.HeadlessOCLValidator"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="SistemaEmprestimos_CIM"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="SistemaEmprestimos_CIM"/>
+    <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -Dorg.osgi.framework.bundle.parent=boot -Dorg.eclipse.emf.ecore.plugin.EcorePlugin.noSplash=true"/>
 </launchConfiguration>

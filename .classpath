@@ -7,55 +7,18 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.edit_4.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.ecore.edit_4.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.uml.edit_5.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.uml_5.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.doc_3.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.cdo.server.ocl_4.5.2.v20260304-1812.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.cdo.server.ocl.source_4.5.2.v20260304-1812.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.validation.ocl.source_1.5.0.202510230804.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.uml.ui_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.sirius.common.ocl_7.4.14.202512030914.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.uml.oclconstraintevaluation_7.1.0.202511140857.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.sdk.ui_7.1.0.202511140857.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.metamodel_7.1.0.202511140857.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.core_7.1.0.202511140857.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.oclstdlib.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.oclstdlib_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.oclinecore_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.markup_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.essentialocl_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.completeocl.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.markup.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.oclinecore.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.completeocl_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.base.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.essentialocl.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.pivot_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.xtext.console_4.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.xtext.base_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.emf.validation.validity.ui_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.pivot.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.pivot.uml_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.emf.validation.validity_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.debug.vm.ui_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.ecore_3.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl_3.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.common.ui_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.debug_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.common_1.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.examples.debug.vm_2.23.0.v20260217-0639.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.validation.ocl_1.5.0.202510230804.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.sirius.common.ocl_7.4.10.202505160804.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.uml.oclconstraintevaluation_7.0.0.202506041214.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.sdk.ui_7.0.0.202506041214.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.metamodel_7.0.0.202506041214.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.papyrus.emf.facet.query.ocl.core_7.0.0.202506041214.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.ecore.xmi.source_2.40.0.v20251210-1145.jar"/>
+	<!-- EMF Core - Versões mais recentes -->
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.ecore_2.42.0.v20251210-1145.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.common_2.31.0.v20251210-1145.jar"/>
 	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.ecore.xmi_2.40.0.v20251210-1145.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.ecore.xmi_2.39.0.v20250414-1351.jar"/>
+	<!-- OCL Core -->
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl_3.23.0.v20260217-0639.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.common_1.23.0.v20260217-0639.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.ecore_3.23.0.v20260217-0639.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.ocl.pivot_1.23.0.v20260217-0639.jar"/>
+	<!-- Equinox OSGi -->
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.osgi_3.24.100.v20251215-1416.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.equinox.common_3.20.300.v20251111-0312.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vitor/.p2/pool/plugins/org.eclipse.emf.ecore.xmi_2.40.0.v20251210-1145.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
