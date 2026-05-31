@@ -1,18 +1,119 @@
 [comment encoding = UTF-8 /]
+[comment 
+  Template Acceleo para gerar DDL SQL a partir do Modelo Relacional (PSM)
+  Autor: MDE - Sistema de Empréstimos
+  Data: 2026-05-31
+  
+  Esta template converte tabelas do modelo Relacional em comandos SQL CREATE TABLE
+  com tipos de dados, primary keys, foreign keys e constraints.
+/]
 [module generate('relational')]
 
-[template public generateElement(r : relational::Table)]
-CREATE TABLE [r.name/] (
-[for (c : relational::Column | r.columns)]
-  [c.name/] [c.type/][if (c.pk)] PRIMARY KEY[endif][if (c <> r.columns->last())],[/if]
-[endfor]
-);
+[comment ============================================ /]
+[comment Template Principal: Gera DDL SQL /]
+[comment ============================================ /]
+[template public main(resource : org.eclipse.emf.ecore.EObject)]
+[comment Cabeçalho do script SQL /]
+-- =====================================================
+-- Script de Criação de Banco de Dados
+-- Sistema de Empréstimos de Equipamentos
+-- Gerado automaticamente via M2T (Model-to-Text)
+-- Data: [now()/]
+-- =====================================================
 
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE='STRICT_TRANS_TABLES';
+
+[for (t : relational::Table | resource.eContents()->select(e | e.oclIsKindOf(relational::Table))->collect(e | e.oclAsType(relational::Table)))]
+[generateTableDDL(t)/]
+
+[endfor]
+
+[comment Comentário final /]
+-- =====================================================
+-- Fim do script de criação
+-- =====================================================
+
+SET FOREIGN_KEY_CHECKS=1;
+[/template]
+
+[comment ============================================ /]
+[comment Template: Gera CREATE TABLE para uma tabela /]
+[comment ============================================ /]
+[template public generateTableDDL(table : relational::Table)]
+DROP TABLE IF EXISTS `[table.name/]`;
+
+CREATE TABLE `[table.name/]` (
+[for (col : relational::Column | table.columns)]
+  `[col.name/]` [generateColumnDef(col)/][if (col <> table.columns->last())],[/if]
+[/for][if (hasConstraints(table))],[/if]
+[generateConstraints(table)/]
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+[generateIndices(table)/]
+
+[/template]
+
+[comment ============================================ /]
+[comment Template: Gera definição de coluna /]
+[comment ============================================ /]
+[template public generateColumnDef(col : relational::Column)]
+[col.type/][if (col.pk)] NOT NULL PRIMARY KEY AUTO_INCREMENT[else] NULL[/if][/template]
+
+[comment ============================================ /]
+[comment Template: Gera constraints (FK, UNIQUE) /]
+[comment ============================================ /]
+[template public generateConstraints(table : relational::Table)]
+[if (hasConstraints(table))]
+  [comment Constraints de Foreign Key ou UNIQUE podem ser adicionados aqui /]
+  CONSTRAINT `pk_[table.name/]` PRIMARY KEY ([getPrimaryKey(table)/])
+[/if]
+[/template]
+
+[comment ============================================ /]
+[comment Helper: Verifica se há constraints /]
+[comment ============================================ /]
+[query public hasConstraints(table : relational::Table) : Boolean =
+  table.columns->exists(c | c.pk) or table.columns->exists(c | not c.pk)
+/]
+
+[comment ============================================ /]
+[comment Helper: Retorna nome da chave primária /]
+[comment ============================================ /]
+[query public getPrimaryKey(table : relational::Table) : String =
+  table.columns->filter(c | c.pk)->collect(c | '`' + c.name + '`')->sep(', ')
+/]
+
+[comment ============================================ /]
+[comment Template: Gera índices para otimização /]
+[comment ============================================ /]
+[template public generateIndices(table : relational::Table)]
+[comment Índices em colunas de chave estrangeira /]
+[for (col : relational::Column | table.columns)]
+[if (col.name.toLowerCase().contains('id') or col.name.toLowerCase().contains('codigo') or col.name.toLowerCase().contains('matricula'))]
+-- CREATE INDEX `idx_[table.name/]_[col.name/]` ON `[table.name/]` (`[col.name/]`);
+[/if]
+[/for]
+[/template]
+
+[comment ============================================ /]
+[comment Template Alternativo: Generate Model (antigo) /]
+[comment ============================================ /]
 [template public generateModel(rs : Sequence(relational::Table))]
 [for (t : relational::Table | rs)]
-[generateElement(t)/]
+[generateTableDDL(t)/]
+[/for]
+[/template]
 
+[comment ============================================ /]
+[comment Template Alternativo: Generate Element (antigo) /]
+[comment ============================================ /]
+[template public generateElement(r : relational::Table)]
+DROP TABLE IF EXISTS `[r.name/]`;
+
+CREATE TABLE `[r.name/]` (
+[for (c : relational::Column | r.columns)]
+  `[c.name/]` [c.type/][if (c.pk)] NOT NULL PRIMARY KEY[endif][if (c <> r.columns->last())],[/if]
 [endfor]
-[template public main(resource : org.eclipse.emf.ecore.EObject)]
--- entry point: receba a raiz/root do modelo Relational e gere o SQL
-[generateModel(resource.eContents()->select(e | e.oclIsKindOf(relational::Table))->collect(e | e.oclAsType(relational::Table)))/]
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+[/template]

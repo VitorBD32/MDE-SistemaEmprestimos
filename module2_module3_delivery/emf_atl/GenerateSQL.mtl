@@ -1,0 +1,18 @@
+[comment encoding = UTF-8 /]
+[module generate('relational')]
+
+[template public generateElement(r : relational::Table)]
+CREATE TABLE [r.name/] (
+[for (c : relational::Column | r.columns)]
+  [c.name/] [c.type/][if (c.pk)] PRIMARY KEY[endif][if (c <> r.columns->last())],[/if]
+[endfor]
+);
+
+[template public generateModel(rs : Sequence(relational::Table))]
+[for (t : relational::Table | rs)]
+[generateElement(t)/]
+
+[endfor]
+[template public main(resource : org.eclipse.emf.ecore.EObject)]
+-- entry point: receba a raiz/root do modelo Relational e gere o SQL
+[generateModel(resource.eContents()->select(e | e.oclIsKindOf(relational::Table))->collect(e | e.oclAsType(relational::Table)))/]

@@ -1,0 +1,61 @@
+-- ATL module: transforma instâncias do PIM (sistema_emprestimo) em um modelo relacional (PSM)
+-- Entrada: modelo PIM (ex: instances/*.xmi usando My.ecore)
+-- Saída: modelo Relational (psm_relational.xmi usando Relational.ecore)
+
+module Sistema2Relational;
+
+create OUT : Relational from IN : sistema_emprestimo;
+
+-- regra de entrada: é acionada quando houver pelo menos um Professor no modelo
+rule ProfessorRoot2Relational {
+    from
+        p : sistema_emprestimo!Professor
+    to
+        -- criamos as tabelas de esquema (uma vez por execução; a regra pode ser executada várias vezes,
+        -- por isso usamos helpers para garantir unicidade quando necessário)
+        tProf : Relational!Table (
+            name <- 'Professor',
+            columns <- Sequence{
+                Relational!Column { name <- 'matricula', type <- 'VARCHAR(64)', pk <- true },
+                Relational!Column { name <- 'nome', type <- 'VARCHAR(255)', pk <- false },
+                Relational!Column { name <- 'departamento', type <- 'VARCHAR(128)', pk <- false }
+            }
+        ),
+        tEq : Relational!Table (
+            name <- 'Equipamento',
+            columns <- Sequence{
+                Relational!Column { name <- 'codigoTombamento', type <- 'INT', pk <- true },
+                Relational!Column { name <- 'nome', type <- 'VARCHAR(255)', pk <- false },
+                Relational!Column { name <- 'isDisponivel', type <- 'BOOLEAN', pk <- false }
+            }
+        ),
+        tEmp : Relational!Table (
+            name <- 'Emprestimo',
+            columns <- Sequence{
+                Relational!Column { name <- 'id', type <- 'INTEGER', pk <- true },
+                Relational!Column { name <- 'dataRetirada', type <- 'TIMESTAMP', pk <- false },
+                Relational!Column { name <- 'dataDevolucaoPrevista', type <- 'TIMESTAMP', pk <- false },
+                Relational!Column { name <- 'equipamentoCodigo', type <- 'INT', pk <- false },
+                Relational!Column { name <- 'professorMatricula', type <- 'VARCHAR(64)', pk <- false }
+            }
+        )
+}
+
+-- caso não exista Professor no modelo, garantimos que a transformação ainda gere o esquema
+rule Fallback2Relational {
+    from
+        e : sistema_emprestimo!Equipamento
+    to
+        tEq2 : Relational!Table (
+            name <- 'Equipamento',
+            columns <- Sequence{
+                Relational!Column { name <- 'codigoTombamento', type <- 'INT', pk <- true },
+                Relational!Column { name <- 'nome', type <- 'VARCHAR(255)', pk <- false },
+                Relational!Column { name <- 'isDisponivel', type <- 'BOOLEAN', pk <- false }
+            }
+        )
+}
+
+-- Observação: este ATL é um módulo simples de prova de conceito que cria um PSM de esquema relacional
+-- a partir da presença de elementos do PIM. Em cenários mais complexos, crie regras dedicadas e
+-- transforme metamodelos (M2MM) ou transforme instâncias em linhas/tuplas no PSM.

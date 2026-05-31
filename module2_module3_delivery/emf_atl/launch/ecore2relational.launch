@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.m2m.atl.ui.launching.transformation">
+  <stringAttribute key="modulePath" value="/module2_module3_delivery/emf_atl/ecore2relational.atl"/>
+  <stringAttribute key="sourceModelURI" value="platform:/resource/PROJECT_NAME/path/to/My.ecore"/>
+  <stringAttribute key="sourceMetamodelURI" value="Ecore"/>
+  <stringAttribute key="targetModelURI" value="platform:/resource/PROJECT_NAME/path/to/output/psm_relational.xmi"/>
+  <stringAttribute key="targetMetamodelURI" value="platform:/resource/PROJECT_NAME/module2_module3_delivery/emf_atl/Relational.ecore"/>
+  <stringAttribute key="moduleName" value="Ecore2Relational"/>
+  <booleanAttribute key="keepModels" value="true"/>
+  <!-- Edit the PROJECT_NAME and paths above before running. -->
+</launchConfiguration>

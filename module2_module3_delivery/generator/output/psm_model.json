@@ -1,0 +1,30 @@
+{
+  "tables": [
+    {
+      "name": "Professor",
+      "columns": [
+        {"name": "matricula", "type": "VARCHAR(64)", "pk": true},
+        {"name": "nome", "type": "VARCHAR(255)"},
+        {"name": "departamento", "type": "VARCHAR(128)"}
+      ]
+    },
+    {
+      "name": "Equipamento",
+      "columns": [
+        {"name": "codigoTombamento", "type": "INT", "pk": true},
+        {"name": "nome", "type": "VARCHAR(255)"},
+        {"name": "isDisponivel", "type": "BOOLEAN"}
+      ]
+    },
+    {
+      "name": "Emprestimo",
+      "columns": [
+        {"name": "id", "type": "INTEGER", "pk": true},
+        {"name": "dataRetirada", "type": "TIMESTAMP"},
+        {"name": "dataDevolucaoPrevista", "type": "TIMESTAMP"},
+        {"name": "equipamentoCodigo", "type": "INT"},
+        {"name": "professorMatricula", "type": "VARCHAR(64)"}
+      ]
+    }
+  ]
+}

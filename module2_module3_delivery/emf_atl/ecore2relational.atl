@@ -1,0 +1,52 @@
+-- ATL transformation: converte o metamodelo Ecore (PIM: My.ecore) em um modelo Relational (PSM)
+-- Entrada: modelo do tipo Ecore (ex.: My.ecore carregado como model)
+-- Saída: instâncias do metamodelo Relational (psm_relational.xmi)
+
+module Ecore2Relational;
+
+create OUT : Relational from IN : Ecore;
+
+-- Regra principal: cada EClass vira uma Table
+rule EClass2Table {
+    from
+        c : Ecore!EClass
+    to
+        t : Relational!Table (
+            name <- c.name,
+            columns <- c.eStructuralFeatures->select(sf | sf.oclIsTypeOf(Ecore!EAttribute))->collect(a | thisModule.EAttribute2Column(a))
+        )
+}
+
+-- helper: cria Column a partir de EAttribute
+helper def : EAttribute2Column(a : Ecore!EAttribute) : Relational!Column =
+    Relational!Column {
+        name <- a.name,
+        type <- if a.eType.oclIsUndefined() then 'VARCHAR(255)'
+                else if a.eType.name = 'EString' then 'VARCHAR(255)'
+                else if a.eType.name = 'EInt' then 'INT'
+                else if a.eType.name = 'EBoolean' then 'BOOLEAN'
+                else if a.eType.name = 'EDate' then 'TIMESTAMP'
+                else 'VARCHAR(255)'
+                endif endif endif endif,
+        pk <- (a.name.toLowerCase().contains('id') or a.name.toLowerCase().contains('codigo') or a.name.toLowerCase().contains('matricula'))
+    };
+
+-- Em alguns casos EClasses utilitárias (como EString) aparecem; filtramos para evitar criar tabelas sem nome
+pattern ValidEClass(c : Ecore!EClass) = {
+    filter : c.name <> null and c.name <> '';
+};
+
+-- Aplica apenas para classes válidas
+lazy rule ValidEClass2Table {
+    from
+        c : Ecore!EClass (c.name <> null)
+    to
+        t : Relational!Table (
+            name <- c.name,
+            columns <- c.eStructuralFeatures->select(sf | sf.oclIsTypeOf(Ecore!EAttribute))->collect(a | thisModule.EAttribute2Column(a))
+        )
+}
+
+-- Nota: dependendo da configuração do ATL no Eclipse, registre os metamodelos Ecore e Relational
+-- no run configuration (Ecore para entrada, Relational para saída). O arquivo My.ecore deve ser
+-- carregado como modelo de entrada (tipo Ecore) — a transformação mapeia EClass -> Table e EAttribute -> Column.
