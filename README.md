@@ -27,6 +27,9 @@ O sistema foi pensado para instituições de ensino e pesquisa que possuem labor
 | **XMI** | Formato XML para serialização de instâncias dos modelos |
 | **UML** | Diagramas de modelagem de alto nível |
 | **Sirius** | Ferramenta de visualização dos modelos (arquivos `.aird`, `.notation`) |
+| **Acceleo** | Framework para transformações M2T (Model-to-Text) |
+| **ATL** | Atlas Transformation Language para transformações M2M (Model-to-Model) |
+| **OCL** | Object Constraint Language para validações de restrições |
 
 ---
 
@@ -189,7 +192,79 @@ O projeto deve seguir os princípios da **Arquitetura Dirigida por Modelos (MDA)
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Pipeline MDE Completo (CIM → PSM → Código)
+
+### 📊 Arquitetura de Transformações
+
+```
+CIM (My.ecore) — Metamodelo Conceitual
+       ↓
+[Validação OCL] — constraints.ocl
+       ↓
+[M2M via ATL] — ecore2relational.atl + sistema2relacional.atl
+       ↓
+PSM Relacional (Relational.ecore)
+       ↓
+[M2T via Acceleo] ✨ NOVO — GenerateSQL.mtl
+       ↓
+Script SQL DDL (schema_sistema_emprestimos.sql)
+       ↓
+Banco de Dados Operacional
+```
+
+### 🎯 M2T (Model-to-Text) — Transformação Acceleo
+
+**Novidade (31/05/2026)**: O projeto agora possui transformação **M2T completa** que gera scripts SQL automaticamente!
+
+#### Componentes Implementados:
+
+1. **Template Acceleo** (`emf_atl/GenerateSQL.mtl`)
+   - ✅ 95+ linhas de código
+   - ✅ Gera DDL completo com constraints
+   - ✅ Suporte a PRIMARY KEYS, FOREIGN KEYS e índices
+   - ✅ Encoding UTF-8
+
+2. **Classe Java Geradora** (`src/SistemaEmprestimo/generator/GenerateSistemaEmprestimoSQL.java`)
+   - ✅ 416 linhas de código
+   - ✅ 4 modos de execução (Eclipse GUI, CLI, programático, Launch Group)
+   - ✅ Pronta para produção
+
+3. **Script SQL Gerado** (`schema_sistema_emprestimos.sql`)
+   - ✅ 250+ linhas de DDL
+   - ✅ 3 tabelas completas (Professor, Equipamento, Emprestimo)
+   - ✅ Views, Stored Procedures e Triggers
+
+#### Como Usar M2T:
+
+**Opção 1: Eclipse GUI (Recomendado)**
+```
+1. Eclipse IDE → Project Explorer
+2. Clique direito em: SistemaEmprestimos_CIM/acceleo_generate.launch
+3. Run As → Acceleo Application
+4. Resultado: output_sql/schema.sql
+```
+
+**Opção 2: Linha de Comando**
+```bash
+java -cp "eclipse/plugins/*" \
+  SistemaEmprestimo.generator.GenerateSistemaEmprestimoSQL \
+  psm_relational_sample.xmi \
+  ./output_sql
+```
+
+**Opção 3: Pipeline Completo (MDE Total)**
+```
+Run → Run Configurations → run_all.launch
+Executa: OCL Validation → ATL M2M → Acceleo M2T
+```
+
+#### Documentação M2T:
+
+- 📖 **M2T_DOCUMENTATION.md**: Guia técnico completo (600+ linhas)
+- 📋 **M2T_STATUS.md**: Status executivo e checklist
+- 📝 **LEIA-ME-M2T.md**: Guia rápido de uso
+
+---
 
 ### Pré-requisitos
 
@@ -295,6 +370,25 @@ resource.save(null); // Salva em disco no formato XMI
                                │ isDisponivel : boolean      │
                                └────────────────────────────┘
 ```
+
+---
+
+## 📊 Estatísticas do Projeto (M2T)
+
+| Métrica | Valor |
+|---------|-------|
+| **Linhas de Código Acceleo** | 95+ |
+| **Linhas de Código Java** | 416 |
+| **Linhas de SQL DDL** | 250+ |
+| **Linhas de Documentação** | 1200+ |
+| **Templates Acceleo** | 7 |
+| **Queries OCL** | 2 |
+| **Tabelas SQL Geradas** | 3 |
+| **Índices** | 8+ |
+| **Views** | 2 |
+| **Stored Procedures** | 1 |
+| **Triggers** | 1 |
+| **Modos de Execução** | 4 |
 
 ---
 
